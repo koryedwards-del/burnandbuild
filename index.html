@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burn & Build — The Fastest Way to Lose Fat and Build Muscle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --fire: #E8671A;
+      --dark: #000000;
+      --dark2: #000000;
+      --dark3: #000000;
+      --text: #FFFFFF;
+      --muted: #999999;
+      --border: rgba(255,255,255,0.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Open Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 56px;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(10px);
+    }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      color: var(--fire);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-logo {
+      width: min(218px, 43vw);
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 900;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 .line1 { color: var(--text); display: block; }
+    .hero h1 .line2 { color: var(--fire); display: block; }
+    .hero-sub {
+      margin-top: 20px;
+      font-size: clamp(16px, 2.2vw, 19px);
+      color: var(--muted);
+      max-width: 600px;
+      width: 100%;
+      line-height: 1.75;
+    }
+    .hero-cta {
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-hero {
+      display: inline-block;
+      border: 1px solid var(--fire);
+      color: var(--fire);
+      background: transparent;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 52px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.22s, color 0.22s;
+    }
+    .btn-hero:hover { background: var(--fire); color: #fff; }
+    .hero-cta-sub {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── PHONES ── */
+    .phones-section {
+      padding: 20px 20px 30px;
+      display: flex;
+      justify-content: center;
+    }
+    .phones {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 480px;
+      width: 100%;
+      align-items: end;
+    }
+    .phone-wrap img {
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+      display: block;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    /* ── SECTION SHARED ── */
+    .section-eyebrow {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fire);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 900;
+      font-size: clamp(25px, 4vw, 46px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--fire);
+      margin: 8px auto;
+      opacity: 1;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 24px 20px 40px;
+      background: var(--dark2);
+    }
+    .features-inner { max-width: 960px; margin: 0 auto; }
+    .features-text { text-align: left; margin-bottom: 40px; }
+
+    /* Hero feature card */
+    .feature-main {
+      background: #1A1A1A;
+      border-radius: 12px;
+      padding: 40px 36px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+    .feature-tag {
+      display: inline-block;
+      border: 1px solid rgba(74,122,138,0.5);
+      color: #5A9AAA;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .feature-main h3 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 800;
+      font-size: 26px;
+      margin-bottom: 12px;
+    }
+    .feature-main p {
+      color: #999;
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 660px;
+      margin-bottom: 22px;
+    }
+    .proven-pill {
+      display: inline-block;
+      border: 1px solid rgba(74,122,138,0.4);
+      color: #5A9AAA;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 4px;
+    }
+
+    /* Feature grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .feat-card {
+      background: #1A1A1A;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px 22px;
+      transition: border-color 0.2s;
+    }
+    .feat-card:hover { border-color: rgba(232,103,26,0.25); }
+    .feat-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+    .feat-card h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .feat-card p { color: #888; font-size: 14px; line-height: 1.65; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 40px 20px 20px;
+      background: var(--dark);
+    }
+    .testimonials-inner { max-width: 960px; margin: 0 auto; text-align: center; }
+    .testi-carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .testi-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .testi-card {
+      min-width: 100%;
+      background: #1A1A1A;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--fire);
+      padding: 36px 32px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .testi-quote {
+      font-style: italic;
+      font-size: 15px;
+      color: #ccc;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+    .testi-quote::before { content: '\201C'; }
+    .testi-quote::after  { content: '\201D'; }
+    .testi-name {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fire);
+    }
+    .testi-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+    .testi-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #444;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.2s;
+    }
+    .testi-dot.active { background: var(--fire); }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 20px 20px 40px;
+      background: var(--dark2);
+      text-align: center;
+    }
+    .pricing-inner { max-width: 520px; margin: 0 auto; }
+    .pricing-card {
+      background: #1A1A1A;
+      border: 1px solid var(--fire);
+      border-radius: 14px;
+      padding: 56px 60px;
+      margin-top: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232,103,26,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .pricing-price {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 900;
+      font-size: 76px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .pricing-label { color: #888; font-size: 15px; margin-bottom: 14px; }
+    .pricing-tag {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--fire);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      color: var(--fire);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a {
+      color: #777;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--fire); }
+    .footer-copy { color: #555; font-size: 13px; }
+
+    /* ── MOBILE NAV HAMBURGER ── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #aaa;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .nav-toggle:hover span { background: #fff; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 18px; position: relative; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0.97);
+        padding: 20px 24px;
+        gap: 18px;
+        border-bottom: 1px solid var(--border);
+        z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { list-style: none; }
+      .phones { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-main { padding: 28px 22px; }
+      .pricing-card { padding: 40px 28px; }
+      .pricing-price { font-size: 60px; }
+      footer { flex-direction: column; align-items: center; text-align: center; padding: 28px 20px; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+    <nav>
+    <a class="nav-brand" href="/">BURN &amp; BUILD</a>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/privacypolicy">Privacy Policy</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-logo" src="images/BBclearlogo.png" alt="Burn & Build" />
+    <h1>
+      <span class="line1">Your Food Plan.</span>
+      <span class="line2">Built for Your Body.</span>
+    </h1>
+    <p class="hero-sub">A custom eating plan calculated from your lean body mass, your job, your lifestyle, and your activities. Not a guess. Not a template. Yours.</p>
+  </section>
+
+  <!-- PHONES -->
+  <section class="phones-section">
+    <div class="phones">
+      <div class="phone-wrap">
+        <img src="images/homeview.png" alt="App Home Screen" />
+      </div>
+      <div class="phone-wrap">
+        <img src="images/customfoodplan.png" alt="Custom Food Plan" />
+      </div>
+      <div class="phone-wrap">
+        <img src="images/grocerylist.png" alt="Grocery List" />
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section style="text-align: center; padding: 10px 20px 16px;">
+    <span style="display: inline-block; border: 1px solid var(--fire); color: var(--fire); font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.16em; text-transform: uppercase; padding: 20px 72px; border-radius: 50px;">Coming Soon</span>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="features-inner">
+      <div class="features-text">
+        <p class="section-eyebrow">What You Get</p>
+        <h2 class="section-title">Everything you need to lose fat and keep the muscle.</h2>
+      </div>
+      <div class="feature-main">
+        <span class="feature-tag">The Engine</span>
+        <h3>Your Custom Food Plan</h3>
+        <p>During onboarding, you enter your lean body mass, your job, your lifestyle, and your activities. The Burn Engine computes your exact daily macros — then converts them into simple servings of Protein, Grains, Starches, Veggies, Fruits, and Fats. No calorie counting. No guesswork. The same system that's produced results since 1982.</p>
+        <span class="proven-pill">Proven Since 1982</span>
+      </div>
+      <div class="features-grid">
+        <div class="feat-card">
+          <span class="feat-icon">🥩</span>
+          <h4>278 Curated Foods</h4>
+          <p>We searched the entire USDA database — 350,000 foods — and found 278 that will help you burn fat and build muscle.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">👆</span>
+          <h4>Tap Tap Tap</h4>
+          <p>Tap your food choice to create your meal and build your shopping list at the same time.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🛒</span>
+          <h4>Grocery List</h4>
+          <p>Your daily food selections build your weekly grocery list automatically. Every item, every amount, organized by category. Walk in, buy it, done.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🔥</span>
+          <h4>Fat Points</h4>
+          <p>How much fat do you burn in a day? Now you'll know. Burn &amp; Build's custom food plan helps you track your fat points. Stay under your number and you lose fat.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">⏰</span>
+          <h4>Meal Timing</h4>
+          <p>Your meal timing is designed to maximize strength, energy, and fat loss. Turn on reminders and your phone keeps you on track all day.</p>
+        </div>
+
+        <div class="feat-card">
+          <span class="feat-icon">⚡</span>
+          <h4>For Best Results</h4>
+          <p>Every tip, note, and insight from 40+ years of coaching — pulled from the original food sheets and built into the app. The details that turn good results into great ones.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">🍳</span>
+          <h4>Food Prep Ideas</h4>
+          <p>Simple, practical prep strategies so your plan stays on track during a busy week. No complicated recipes. No extra effort.</p>
+        </div>
+        <div class="feat-card">
+          <span class="feat-icon">📖</span>
+          <h4>Recipes</h4>
+          <p>Meals built around your plan's food groups. Delicious, on-plan options that keep things fresh without throwing off your macros.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <p class="section-eyebrow">Real People. Real Results.</p>
+      <h2 class="section-title">What They're Saying</h2>
+      <div style="display: flex; flex-direction: column; gap: 18px; max-width: 700px; margin: 0 auto;">
+        <div class="testi-card">
+          <p class="testi-quote">First Impressions of Apps is everything, and my First Impression is a 10 out of 10.</p>
+          <p class="testi-name">Scott Horan</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">I learned this program in 1992 and it has been invaluable! I almost bought in to the chatter "you just have to eat less as you get older" and then I remembered what I learned all those years ago — and now it's an app! So excited! At 67 years old, I am confident that I can maintain and even build muscle and lose fat! Let's go!</p>
+          <p class="testi-name">Linda Kay &mdash; Client Since 1992</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">If you want to see real results like you never thought possible, this is the plan to be on because it dials everything in for each person. It's not a cookie cutter diet.</p>
+          <p class="testi-name">Dave McAferty &mdash; Client Since 1990</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-inner">
+      <p class="section-eyebrow">Try It Free for 30 Days.</p>
+      <h2 class="section-title">Then just $39.99 a year.</h2>
+      <div class="pricing-card">
+        <div class="pricing-price">$39.99</div>
+        <p class="pricing-label">Per year — 30-day free trial</p>
+        <p class="pricing-tag">Everything Included</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+    <footer>
+    <a class="footer-brand" href="/">BURN &amp; BUILD</a>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/privacypolicy">Privacy Policy</a></li>
+      <li><a href="/support">Contact &amp; Support</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Burn &amp; Build. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
